@@ -1,0 +1,6 @@
+---
+- name: Run Jira.bin with response file
+  command: "./{{jira_bin}} -q -varfile {{response_file}}"
+  become_user: jira
+  become_method: su
+  chdir: /opt

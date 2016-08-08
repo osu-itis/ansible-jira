@@ -1,0 +1,4 @@
+---
+jira_bin: atlassian-jira-6.4.7-x64.bin
+response_file: response.varfile
+working_dir: /tmp

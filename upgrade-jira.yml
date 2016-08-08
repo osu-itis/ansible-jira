@@ -1,0 +1,9 @@
+---
+- hosts: all
+  remote_user: vagrant
+  become_user: root
+  become_method: sudo
+  gather_facts: false
+
+  include: 
+   - roles/upgrade

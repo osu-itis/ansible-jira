@@ -1,0 +1,11 @@
+---
+- name: Copy jira.bin
+  copy:
+    src=files/{{ jira_bin }}
+    dest=/opt
+    mode="a+x"
+
+- name: Copy response.varfile
+  copy:
+    src={{ response_file }}
+    dest=/opt
