@@ -1,3 +1,3 @@
 ---
 - include: copy-jira.yml
-#- include: install-jira.yml
+- include: install-jira.yml

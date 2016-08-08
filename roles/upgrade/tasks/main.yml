@@ -1,4 +1,4 @@
 ---
 - include: stop-jira.yml
 - include: copy-jira.yml
-- include: install-jira.yml
+- include: upgrade-jira.yml

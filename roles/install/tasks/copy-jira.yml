@@ -7,5 +7,5 @@
 
 - name: Copy response.varfile
   copy:
-    src={{ response_file }}
+    src=roles/install/files/{{ response_file }}
     dest=/opt
