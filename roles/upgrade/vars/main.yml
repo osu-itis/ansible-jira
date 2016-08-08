@@ -1,4 +1,4 @@
 ---
-jira_bin: /files/atlassian-jira-software-7.1.6-jira-7.1.6-x64.bin
+jira_bin: files/atlassian-jira-software-7.1.6-jira-7.1.6-x64.bin
 jira_home: /var/atlassian/application-data/jira
 jira_install: /opt/atlassian/jira
