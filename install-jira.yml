@@ -1,8 +1,6 @@
 ---
 - hosts: jira-host
   gather_facts: no
-  user: vagrant
-  become: true
   become_user: root
   become_method: su
 
