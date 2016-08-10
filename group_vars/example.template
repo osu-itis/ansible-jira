@@ -1,0 +1,7 @@
+---
+jira:
+    installer_path: /private/nfs
+    installer_filename: atlassian-jira-software-7.1.9-x64.bin
+    installer_temp_path: /tmp
+    app_home: /var/atlassian/application-data/jira
+    app_install: /opt/atlassian/jira

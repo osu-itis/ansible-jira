@@ -1,6 +1,5 @@
 ---
-- name: Copy jira.bin
-  copy:
-    src  = ../..//files/{{ jira_bin }}
-    dest = /opt
-    mode = "a+x"
+- name: Download jira.bin
+  get_url: url="{{ jira.installer_url }}"
+           dest="{{ jira.installer_temp_path }}/{{ jira.installer_filename }}"
+           mode=744

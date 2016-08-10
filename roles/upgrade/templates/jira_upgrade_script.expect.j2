@@ -1,0 +1,38 @@
+#!/usr/bin/expect -f
+
+set timeout -1
+exp_internal 1
+
+spawn {{ jira.installer_temp_path }}/{{ jira.installer_filename }}
+
+expect {
+    -ex "OK \[o, Enter\], Cancel \[c\]" {
+        send "o\r"
+    }
+}
+
+expect {
+    -ex "Upgrade an existing JIRA installation \[3, Enter\]" {
+        send "3\r"
+    }
+}
+
+expect {
+    "Existing installation directory:" {
+        send "\r"
+    }
+}
+
+expect {
+    "Back up JIRA home directory?" { exp_continue }
+    -ex "Yes \[y, Enter\], No \[n\]" {
+        send "n\r"
+    }
+}
+
+expect {
+    "Your existing JIRA installation is about to be upgraded! Do you want to proceed?" { exp_continue }
+    -ex "Upgrade \[u, Enter\], Exit \[e\]" {
+        send "u\r"
+    }
+}

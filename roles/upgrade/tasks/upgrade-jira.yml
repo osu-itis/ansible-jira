@@ -1,4 +1,22 @@
 ---
-- name: Run Jira.bin with response file
-  command: "./{{jira_bin}} -q -varfile {{response_file}}"
-  chdir: /opt
+- name: Install packages
+  yum: name={{item}} state=present update_cache=yes
+  with_items:
+    - expect
+
+- name: Prepare expect script
+  template: src=jira_upgrade_script.expect.j2
+            dest="{{ jira.installer_temp_path }}/jira_upgrade_script.expect"
+            owner=root
+            group=root
+
+- name: Run upgrade
+  command: "/usr/bin/expect {{ jira.installer_temp_path }}/jira_upgrade_script.expect"
+
+- name: Cleanup packages
+  yum: name={{item}} state=absent
+  with_items:
+    - expect
+
+- name: Cleanup expect script
+  file: path="{{ jira.installer_temp_path }}/jira_upgrade_script.expect" state=absent
