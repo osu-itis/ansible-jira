@@ -1,0 +1,10 @@
+---
+- name: create backup file directory
+  file: path={{ jira.installer_temp_path }}/jira_upgrade_backup state=directory mode=0755
+
+- block:
+    - name: backup modified files
+      command: cp --parents {{ item }} {{ jira.installer_temp_path }}/jira_upgrade_backup
+      with_items: "{{ jira.modified_files }}"
+  rescue:
+    - fail: msg="Could not find some file(s) to backup. Double-check your list?"

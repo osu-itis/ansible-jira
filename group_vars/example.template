@@ -1,7 +1,11 @@
 ---
 jira:
-    installer_path: /private/nfs
+    installer_url: https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-7.1.9-x64.bin
     installer_filename: atlassian-jira-software-7.1.9-x64.bin
     installer_temp_path: /tmp
     app_home: /var/atlassian/application-data/jira
     app_install: /opt/atlassian/jira
+    modified_files:
+        - /opt/atlassian/jira/conf/server.xml
+        - /opt/atlassian/jira/bin/setenv.sh
+use_proxy: proxy.someplace.edu:3128

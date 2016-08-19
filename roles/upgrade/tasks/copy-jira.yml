@@ -1,5 +1,16 @@
 ---
+- name: Build cURL command (with proxy)
+  set_fact:
+    curl_cmd: "curl -sL --proxy {{ use_proxy }} -o {{ jira.installer_temp_path }}/{{ jira.installer_filename }} {{ jira.installer_url }}"
+  when: use_proxy is defined
+
+- name: Build cURL command (no proxy)
+  set_fact:
+    curl_cmd: "curl -sL -o {{ jira.installer_temp_path }}/{{ jira.installer_filename }} {{ jira.installer_url }}"
+  when: use_proxy is not defined
+
 - name: Download jira.bin
-  get_url: url="{{ jira.installer_url }}"
-           dest="{{ jira.installer_temp_path }}/{{ jira.installer_filename }}"
-           mode=744
+  command: "{{ curl_cmd }}"
+
+- name: Set mode
+  file: path={{ jira.installer_temp_path }}/{{ jira.installer_filename }} mode=0755

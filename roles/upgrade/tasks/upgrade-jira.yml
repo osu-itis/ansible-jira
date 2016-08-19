@@ -1,4 +1,11 @@
 ---
+- block:
+    - name: Set http_proxy
+      lineinfile: dest=/etc/environment line="http_proxy=http://{{ use_proxy }}"
+    - name: Set https_proxy
+      lineinfile: dest=/etc/environment line="https_proxy=https://{{ use_proxy }}"
+  when: use_proxy is defined
+
 - name: Install packages
   yum: name={{item}} state=present update_cache=yes
   with_items:
