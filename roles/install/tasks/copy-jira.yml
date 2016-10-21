@@ -1,7 +1,7 @@
 ---
 - name: Copy jira.bin
   copy:
-    src=files/{{ jira_bin }}
+    src=../../../files/{{ jira_bin }}
     dest=/opt
     mode="a+x"
 

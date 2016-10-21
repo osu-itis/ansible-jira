@@ -1,8 +1,6 @@
 ---
 - hosts: jira-host
-  gather_facts: no
-  become_user: root
-  become_method: su
+  user: root
 
   roles:
     - install
